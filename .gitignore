@@ -174,3 +174,5 @@ dist
 # Finder (macOS) folder config
 .DS_Store
 
+# SQLite
+*.sqlite
