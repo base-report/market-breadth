@@ -40,8 +40,12 @@ const createIndex = (db: Database) => {
   query.run();
 };
 
-const db = new Database("market_breadth.sqlite");
+console.time("setupDb");
+
+const db = new Database(process.env.DB_PATH);
 
 createStocksDataTable(db);
 createDailyDataTable(db);
 createIndex(db);
+
+console.timeEnd("setupDb");
