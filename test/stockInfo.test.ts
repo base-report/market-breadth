@@ -1,5 +1,5 @@
 import { expect, test, describe } from "bun:test";
-import { parseAndExtract } from "../src/fmp";
+import { parseAndExtract } from "../src/fmp/profiles";
 
 const data = `
 "Symbol","Price","Beta","VolAvg","MktCap","LastDiv","Range","Changes","companyName","currency","cik","isin","cusip","exchange","exchangeShortName","industry","website","description","CEO","sector","country","fullTimeEmployees","phone","address","city","state","zip","DCF_diff","DCF","image","ipoDate","defaultImage","isEtf","isActivelyTrading","isFund","isAdr"

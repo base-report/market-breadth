@@ -1,3 +1,3 @@
-import { seedDBStocks } from "./fmp";
+import { seedStocks } from "./seed";
 
-seedDBStocks();
+seedStocks();
