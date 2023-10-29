@@ -1,3 +1,8 @@
-import { seedStocks } from "./seed";
+import { seedStocks, seedStockTimeseries } from "./seed";
+import { getStockTimeseries } from "./db";
 
-seedStocks();
+// seedStocks();
+seedStockTimeseries();
+
+// const timeseries = getStockTimeseries("AA");
+// console.log(timeseries);
