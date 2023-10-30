@@ -13,4 +13,16 @@ const parseDate = (dateString: string, timeZone = "US/Eastern") => {
   return _date;
 };
 
-export { parseDate };
+const timestampToDateStr = (timestamp: number): string => {
+  // Create a new date object from the timestamp
+  const date = new Date(timestamp);
+
+  // Convert to YYYY-MM-DD format
+  const year = date.getUTCFullYear(); // YYYY
+  const month = (date.getUTCMonth() + 1).toString().padStart(2, "0"); // MM
+  const day = date.getUTCDate().toString().padStart(2, "0"); // DD
+
+  return `${year}-${month}-${day}`; // YYYY-MM-DD
+};
+
+export { parseDate, timestampToDateStr };
