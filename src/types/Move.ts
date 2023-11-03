@@ -4,6 +4,7 @@ interface Move {
   start_price: number;
   end_price: number;
   days_of_move: number;
+  avg_dollar_vol_20_before_move: number;
 }
 
 interface DBMoveWrite extends Move {

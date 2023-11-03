@@ -41,6 +41,7 @@ const createThirtyPercentMovesTable = (db: Database) => {
       end_date DATE NOT NULL,
       start_price REAL NOT NULL,
       end_price REAL NOT NULL,
+      avg_dollar_vol_20_before_move REAL NOT NULL,
       days_of_move INTEGER NOT NULL,
       percent_change REAL GENERATED ALWAYS AS (round(100 * (end_price - start_price) / start_price, 2)) STORED,
       change_per_day REAL GENERATED ALWAYS AS (round(percent_change / days_of_move, 2)) STORED,

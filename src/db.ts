@@ -29,12 +29,13 @@ const getStockTimeseries = (
 const addThirtyPercentMoves = (stockId: number, moves: Move[]) => {
   const db = new Database(process.env.DB_PATH);
   const insert = db.prepare(
-    `INSERT INTO ThirtyPercentMoves (stock_id, start_date, end_date, start_price, end_price, days_of_move)
-    VALUES ($stock_id, $start_date, $end_date, $start_price, $end_price, $days_of_move)
+    `INSERT INTO ThirtyPercentMoves (stock_id, start_date, end_date, start_price, end_price, days_of_move, avg_dollar_vol_20_before_move)
+    VALUES ($stock_id, $start_date, $end_date, $start_price, $end_price, $days_of_move, $avg_dollar_vol_20_before_move)
     ON CONFLICT (stock_id, start_date) DO UPDATE SET
     end_date = excluded.end_date,
     end_price = excluded.end_price,
-    days_of_move = excluded.days_of_move`,
+    days_of_move = excluded.days_of_move,
+    avg_dollar_vol_20_before_move = excluded.avg_dollar_vol_20_before_move`,
   );
   const insertMoves = db.transaction((_moves) => {
     for (const move of _moves) {
@@ -45,6 +46,7 @@ const addThirtyPercentMoves = (stockId: number, moves: Move[]) => {
         $start_price: move.start_price,
         $end_price: move.end_price,
         $days_of_move: move.days_of_move,
+        $avg_dollar_vol_20_before_move: move.avg_dollar_vol_20_before_move,
       });
     }
     return _moves.length;
